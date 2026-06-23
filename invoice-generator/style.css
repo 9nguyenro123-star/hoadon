@@ -236,18 +236,28 @@ button.btn-secondary:hover {
 }
 
 .page-border {
-    border: 2px solid #5A1E5C;
-    outline: 1px solid #5A1E5C;
-    outline-offset: -5px;
+    border: 7px solid var(--nsp-dark-blue);
+    outline: 8px solid rgba(26, 75, 156, 0.22);
+    outline-offset: -8px;
     min-height: 100%;
-    padding: 25px 30px;
+    padding: 24px 28px;
+    position: relative;
+    background: #ffffff;
+}
+
+.page-border::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border: 1px dashed rgba(26, 75, 156, 0.32);
+    pointer-events: none;
 }
 
 /* Invoice Header */
 .invoice-header {
     display: flex;
-    align-items: center;
-    gap: 20px;
+    align-items: flex-start;
+    gap: 24px;
 }
 
 .logo-container {
@@ -284,20 +294,31 @@ button.btn-secondary:hover {
 
 .company-info {
     flex: 1;
+    text-align: left;
 }
 
 .company-info h2 {
     font-family: Arial, sans-serif;
     color: var(--nsp-blue);
-    font-size: 16pt;
-    margin-bottom: 8px;
-    line-height: 1.2;
+    font-size: 19pt;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .company-info p {
-    margin: 2px 0;
-    font-size: 12pt;
-    color: #3884c7; 
+    margin: 4px 0;
+    font-size: 11pt;
+    color: #1A4B9C;
+    line-height: 1.45;
+}
+
+.company-info .company-note {
+    font-size: 11pt;
+    margin-top: 10px;
+    color: #333;
+    font-weight: 600;
 }
 
 .company-features {
@@ -333,23 +354,44 @@ button.btn-secondary:hover {
 .invoice-title h1 {
     font-family: Arial, sans-serif;
     color: var(--nsp-blue);
-    font-size: 20pt;
+    font-size: 22pt;
     font-weight: bold;
+    letter-spacing: 0.4px;
+    margin: 0;
 }
 
 .project-info-grid {
     display: grid;
-    grid-template-columns: 120px 1fr;
-    row-gap: 5px;
-    font-weight: bold;
-    font-size: 14pt;
-    margin-bottom: 25px;
+    grid-template-columns: 120px minmax(220px, 1fr);
+    row-gap: 8px;
+    column-gap: 16px;
+    font-weight: 600;
+    font-size: 13pt;
+    margin-bottom: 24px;
+}
+
+.project-info-grid .info-label,
+.project-info-grid .info-value {
+    display: block;
+}
+
+.project-info-grid .info-label {
+    text-align: left;
+    color: #1a1a1a;
+}
+
+.project-info-grid .info-value {
+    text-align: left;
+    font-weight: 700;
+    color: #111;
 }
 
 .invoice-intro {
     text-align: justify;
     text-indent: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    font-size: 12pt;
+    color: #111;
 }
 
 .invoice-table {
@@ -360,18 +402,43 @@ button.btn-secondary:hover {
 }
 
 .invoice-table th, .invoice-table td {
-    border: 1px solid #333;
-    padding: 8px 6px;
+    border: 1px solid var(--nsp-dark-blue);
+    padding: 12px 10px;
     vertical-align: middle;
 }
 
 .invoice-table th {
-    background-color: var(--table-header);
-    font-weight: bold;
+    background-color: rgba(26, 75, 156, 0.18);
+    color: var(--nsp-dark-blue);
+    font-weight: 700;
+    font-size: 11.5pt;
+    line-height: 1.2;
+}
+
+.invoice-table thead th {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.invoice-table tbody tr:nth-child(odd) {
+    background-color: rgba(26, 75, 156, 0.04);
+}
+
+.invoice-table tbody td:nth-child(2) {
+    text-align: left;
+    padding-left: 14px;
+    font-weight: 500;
 }
 
 .invoice-table tfoot td {
-    background-color: var(--table-header);
+    background-color: var(--nsp-blue);
+    color: #ffffff;
+    font-weight: 700;
+    border-top: 2px solid var(--nsp-dark-blue);
+}
+
+.invoice-table tfoot td.text-right {
+    background-color: var(--nsp-blue);
 }
 
 .text-right {
@@ -381,13 +448,17 @@ button.btn-secondary:hover {
 
 .amount-in-words {
     font-size: 13pt;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
     font-weight: bold;
+    background-color: #f9f1d7;
+    border-left: 4px solid #c69e58;
+    padding: 10px 14px;
 }
 
 .amount-in-words span {
     font-style: italic;
     font-weight: normal;
+    color: #333;
 }
 
 .work-descriptions {
