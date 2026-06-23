@@ -14,9 +14,7 @@
     --nsp-gold: #C69E58;
     --table-header: #B4C6E7;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-dark);
@@ -24,13 +22,11 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
 .app-container {
     display: flex;
     height: 100vh;
     width: 100vw;
 }
-
 /* Editor Panel */
 .editor-panel {
     width: 420px;
@@ -43,30 +39,25 @@ body {
     box-shadow: 2px 0 15px rgba(0,0,0,0.3);
     z-index: 10;
 }
-
 .editor-header {
     padding: 25px 20px;
     border-bottom: 1px solid var(--border-dark);
     background-color: rgba(0,0,0,0.2);
 }
-
 .editor-header h1 {
     font-size: 1.3rem;
     color: var(--accent);
     font-weight: 700;
 }
-
 .editor-header p {
     font-size: 0.85rem;
     opacity: 0.7;
     margin-top: 5px;
 }
-
 .editor-section {
     padding: 20px;
     border-bottom: 1px solid var(--border-dark);
 }
-
 .editor-section h2 {
     font-size: 1.05rem;
     margin-bottom: 15px;
@@ -76,18 +67,15 @@ body {
     color: var(--text-light);
     font-weight: 600;
 }
-
 .form-group {
     margin-bottom: 15px;
 }
-
 .form-group label {
     display: block;
     font-size: 0.85rem;
     margin-bottom: 6px;
     color: #a6adc8;
 }
-
 .form-group input, .form-group textarea {
     width: 100%;
     padding: 10px 12px;
@@ -99,13 +87,11 @@ body {
     transition: all 0.2s;
     font-size: 0.95rem;
 }
-
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.2);
 }
-
 .item-editor-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--border-dark);
@@ -114,7 +100,6 @@ body {
     margin-bottom: 15px;
     position: relative;
 }
-
 .item-editor-card .remove-btn {
     position: absolute;
     top: 15px;
@@ -127,17 +112,14 @@ body {
     opacity: 0.6;
     transition: opacity 0.2s;
 }
-
 .item-editor-card .remove-btn:hover {
     opacity: 1;
 }
-
 .item-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
-
 button.btn-primary {
     background-color: var(--accent);
     color: #11111b;
@@ -154,12 +136,10 @@ button.btn-primary {
     transition: all 0.2s;
     font-size: 0.95rem;
 }
-
 button.btn-primary:hover {
     background-color: var(--accent-hover);
     transform: translateY(-1px);
 }
-
 .editor-actions {
     padding: 25px 20px;
     display: flex;
@@ -167,7 +147,6 @@ button.btn-primary:hover {
     margin-top: auto;
     background-color: rgba(0,0,0,0.2);
 }
-
 button.btn-secondary {
     background-color: transparent;
     color: var(--accent);
@@ -184,11 +163,9 @@ button.btn-secondary {
     transition: all 0.2s;
     font-size: 0.95rem;
 }
-
 button.btn-secondary:hover {
     background-color: rgba(137, 180, 250, 0.1);
 }
-
 /* Preview Panel */
 .preview-panel {
     flex: 1;
@@ -199,11 +176,9 @@ button.btn-secondary:hover {
     justify-content: center;
     align-items: flex-start;
 }
-
 .paper-wrapper {
     position: relative;
 }
-
 .a4-paper {
     background-color: var(--paper-bg);
     color: var(--paper-text);
@@ -217,7 +192,6 @@ button.btn-secondary:hover {
     position: relative;
     z-index: 1;
 }
-
 .watermark-print {
     position: absolute;
     top: 50%;
@@ -228,21 +202,18 @@ button.btn-secondary:hover {
     z-index: 0;
     pointer-events: none;
 }
-
 .page-border {
     border: 3px dotted #5A1E5C;
     outline: none;
     min-height: 100%;
     padding: 20px 25px;
 }
-
 /* Invoice Header */
 .invoice-header {
     display: flex;
     align-items: center;
     gap: 20px;
 }
-
 .logo-container {
     width: 140px;
     display: flex;
@@ -250,7 +221,6 @@ button.btn-secondary:hover {
     align-items: center;
     text-align: center;
 }
-
 .logo-text {
     font-family: Arial, sans-serif;
     font-weight: 800;
@@ -259,14 +229,12 @@ button.btn-secondary:hover {
     margin-top: -15px;
     letter-spacing: 1px;
 }
-
 .logo-name {
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 11px;
     color: var(--nsp-blue);
 }
-
 .logo-slogan {
     font-family: Arial, sans-serif;
     font-size: 6px;
@@ -274,11 +242,9 @@ button.btn-secondary:hover {
     margin-top: 3px;
     white-space: nowrap;
 }
-
 .company-info {
     flex: 1;
 }
-
 .company-info h2 {
     font-family: Arial, sans-serif;
     color: var(--nsp-blue);
@@ -286,19 +252,16 @@ button.btn-secondary:hover {
     margin-bottom: 4px;
     line-height: 1.1;
 }
-
 .company-info p {
     margin: 1px 0;
     font-size: 11pt;
     color: #3884c7; 
 }
-
 .company-features {
     list-style: none;
     margin-top: 4px;
     padding-left: 0;
 }
-
 .company-features li {
     font-size: 10pt;
     position: relative;
@@ -311,25 +274,21 @@ button.btn-secondary:hover {
     position: absolute;
     left: 0;
 }
-
 .header-divider {
     border: none;
     border-top: 1px solid #333;
     margin: 15px 0 25px 0;
 }
-
 .invoice-title {
     text-align: center;
     margin-bottom: 25px;
 }
-
 .invoice-title h1 {
     font-family: Arial, sans-serif;
     color: var(--nsp-blue);
     font-size: 20pt;
     font-weight: bold;
 }
-
 .project-info-grid {
     display: grid;
     grid-template-columns: 120px 1fr;
@@ -338,56 +297,46 @@ button.btn-secondary:hover {
     font-size: 13pt;
     margin-bottom: 15px;
 }
-
 .invoice-intro {
     text-align: justify;
     text-indent: 30px;
     margin-bottom: 10px;
     line-height: 1.4;
 }
-
 .invoice-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 10px;
     text-align: center;
 }
-
 .invoice-table th, .invoice-table td {
     border: 1px solid #333;
     padding: 5px;
     vertical-align: middle;
 }
-
 .invoice-table th {
     background-color: var(--table-header);
     font-weight: bold;
 }
-
 .invoice-table tfoot td {
     background-color: var(--table-header);
 }
-
 .text-right {
     text-align: right;
     padding-right: 12px !important;
 }
-
 .amount-in-words {
     font-size: 13pt;
     margin-bottom: 15px;
     font-weight: bold;
 }
-
 .amount-in-words span {
     font-style: italic;
     font-weight: normal;
 }
-
 .work-descriptions {
     margin-top: 10px;
 }
-
 .work-desc-title {
     background-color: #FDF1D7;
     display: block;
@@ -397,16 +346,14 @@ button.btn-secondary:hover {
     margin-bottom: 5px;
     font-family: Arial, sans-serif;
 }
-
-.work-descriptions ol {
-    padding-left: 25px;
+.work-descriptions #out-descriptions-list {
+    padding-left: 0;
     text-align: justify;
     line-height: 1.3;
 }
-.work-descriptions li {
+.work-descriptions .desc-line {
     margin-bottom: 2px;
 }
-
 /* Print Styles */
 @media print {
     .no-print, .editor-panel { 
@@ -417,10 +364,11 @@ button.btn-secondary:hover {
         overflow: visible; 
         display: block;
     }
-    body { 
+    body, html { 
         background: white; 
         height: auto; 
         overflow: visible; 
+        min-width: 210mm !important;
     }
     .preview-panel { 
         padding: 0; 
@@ -430,7 +378,7 @@ button.btn-secondary:hover {
     .a4-paper { 
         box-shadow: none; 
         margin: 0; 
-        width: 100%; 
+        width: 210mm !important; 
         min-height: auto;
         padding: 0; /* Let print dialog handle margins */
     }
