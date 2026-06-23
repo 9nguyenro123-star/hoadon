@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trình Tạo Báo Giá - Nam Sang Phát</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="invoice-generator/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -17,7 +17,6 @@
                 <h1>Tạo Báo Giá & Hóa Đơn</h1>
                 <p>NSP Invoice Builder</p>
             </header>
-
             <div class="editor-section">
                 <h2><i class="fas fa-building"></i> Thông tin Khách hàng</h2>
                 <div class="form-group">
@@ -37,7 +36,6 @@
                     <input type="text" id="inp-client-contact" value="">
                 </div>
             </div>
-
             <div class="editor-section">
                 <h2><i class="fas fa-list"></i> Danh sách Hạng mục</h2>
                 <div id="editor-items-container">
@@ -45,29 +43,26 @@
                 </div>
                 <button id="btn-add-item" class="btn-primary"><i class="fas fa-plus"></i> Thêm Hạng mục mới</button>
             </div>
-
             <div class="editor-section">
                 <h2><i class="fas fa-file-alt"></i> Diễn giải công việc</h2>
                 <textarea id="inp-descriptions" rows="8" placeholder="Nhập các bước diễn giải công việc, mỗi bước 1 dòng."></textarea>
             </div>
-
             <div class="editor-actions">
                 <button id="btn-save" class="btn-secondary"><i class="fas fa-save"></i> Lưu Nháp</button>
                 <button id="btn-print" class="btn-primary"><i class="fas fa-print"></i> In / Xuất PDF</button>
             </div>
         </aside>
-
         <!-- Preview Area -->
         <main class="preview-panel">
             <div class="paper-wrapper">
                 <div class="a4-paper print-content">
-                    <img src="invoice-generator/logo.jpg" alt="" class="watermark-image" aria-hidden="true">
+                    <img src="logo.jpg" class="watermark-print" alt="Watermark">
                     <div class="page-border">
                         
                         <div class="invoice-header">
                             <div class="logo-container">
                                 <!-- NSP Logo Image -->
-                                <img src="invoice-generator/logo.jpg" alt="Nam Sang Phát Logo" class="nsp-logo" style="width: 140px; height: auto;">
+                                <img src="logo.jpg" alt="Nam Sang Phát Logo" class="nsp-logo" style="width: 140px; height: auto;">
                             </div>
                             
                             <div class="company-info">
@@ -81,13 +76,10 @@
                                 </ul>
                             </div>
                         </div>
-
                         <hr class="header-divider">
-
                         <div class="invoice-title">
                             <h1>BẢNG BÁO GIÁ VÀ XÁC NHẬN ĐƠN HÀNG</h1>
                         </div>
-
                         <div class="project-info-grid">
                             <div class="info-label">Tên dự án</div>
                             <div class="info-value" id="out-project-name">...</div>
@@ -101,11 +93,9 @@
                             <div class="info-label">Liên hệ</div>
                             <div class="info-value" id="out-client-contact"></div>
                         </div>
-
                         <div class="invoice-intro">
-                            Công ty TNHH Xây dựng và Thương mại Nam Sang Phát xin chân thành cảm ơn sự quan tâm của Quý khách hàng đối với dịch vụ xây dựng và vật tư do Công ty chúng tôi thi công và cung cấp. Chúng tôi xin gởi tới Quý khách hàng bảng báo giá cho dự án <strong id="out-project-name-bold">...</strong> chi tiết như sau:
+                            Công ty TNHH Xây dựng và Thương mại Nam Sang Phát xin chân thành cảm ơn sự quan tâm của <strong>Quý khách hàng</strong> đối với dịch vụ xây dựng và vật tư do Công ty chúng tôi thi công và cung cấp. Chúng tôi xin gởi tới <strong>Quý khách hàng</strong> bảng báo giá cho dự án <strong id="out-project-name-bold">...</strong> chi tiết như sau:
                         </div>
-
                         <table class="invoice-table">
                             <thead>
                                 <tr>
@@ -130,9 +120,8 @@
                         </table>
                         
                         <div class="amount-in-words">
-                            Bằng chữ: <span id="out-total-words">Không đồng.</span>
+                            <span style="text-decoration: underline;">Bằng chữ:</span> <span id="out-total-words">Không đồng.</span>
                         </div>
-
                         <div class="work-descriptions">
                             <div class="work-desc-title">DIỄN GIẢI CÔNG VIỆC</div>
                             <ol id="out-descriptions-list">
@@ -145,6 +134,6 @@
             </div>
         </main>
     </div>
-    <script src="invoice-generator/app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
