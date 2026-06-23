@@ -204,12 +204,13 @@ function renderPreview() {
     const descList = document.getElementById('out-descriptions-list');
     descList.innerHTML = '';
     if (state.descriptions.trim()) {
-        const lines = state.descriptions.split('\\n');
+        const lines = state.descriptions.split('\n');
         lines.forEach(line => {
             if (line.trim()) {
-                const li = document.createElement('li');
-                li.innerText = line.trim();
-                descList.appendChild(li);
+                const div = document.createElement('div');
+                div.className = 'desc-line';
+                div.innerText = line.trim();
+                descList.appendChild(div);
             }
         });
     }
