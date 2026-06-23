@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trình Tạo Báo Giá - Nam Sang Phát</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Editor -->
+        <aside class="editor-panel no-print">
+            <header class="editor-header">
+                <h1>Tạo Báo Giá & Hóa Đơn</h1>
+                <p>NSP Invoice Builder</p>
+            </header>
+
+            <div class="editor-section">
+                <h2><i class="fas fa-building"></i> Thông tin Khách hàng</h2>
+                <div class="form-group">
+                    <label>Tên dự án</label>
+                    <input type="text" id="inp-project-name" value="Xây dựng hàng rào giáp văn phòng">
+                </div>
+                <div class="form-group">
+                    <label>Chủ đầu tư</label>
+                    <input type="text" id="inp-client-name" value="Anh Út">
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="inp-client-address" value="Võ Thị Liễu, Quận 12">
+                </div>
+                <div class="form-group">
+                    <label>Liên hệ</label>
+                    <input type="text" id="inp-client-contact" value="">
+                </div>
+            </div>
+
+            <div class="editor-section">
+                <h2><i class="fas fa-list"></i> Danh sách Hạng mục</h2>
+                <div id="editor-items-container">
+                    <!-- Items injected here by JS -->
+                </div>
+                <button id="btn-add-item" class="btn-primary"><i class="fas fa-plus"></i> Thêm Hạng mục mới</button>
+            </div>
+
+            <div class="editor-section">
+                <h2><i class="fas fa-file-alt"></i> Diễn giải công việc</h2>
+                <textarea id="inp-descriptions" rows="8" placeholder="Nhập các bước diễn giải công việc, mỗi bước 1 dòng."></textarea>
+            </div>
+
+            <div class="editor-actions">
+                <button id="btn-save" class="btn-secondary"><i class="fas fa-save"></i> Lưu Nháp</button>
+                <button id="btn-print" class="btn-primary"><i class="fas fa-print"></i> In / Xuất PDF</button>
+            </div>
+        </aside>
+
+        <!-- Preview Area -->
+        <main class="preview-panel">
+            <div class="paper-wrapper">
+                <div class="a4-paper print-content">
+                    <div class="page-border">
+                        
+                        <div class="invoice-header">
+                            <div class="logo-container">
+                                <!-- NSP Logo Image -->
+                                <img src="logo.jpg" alt="Nam Sang Phát Logo" class="nsp-logo" style="width: 140px; height: auto;">
+                            </div>
+                            
+                            <div class="company-info">
+                                <h2>CÔNG TY TNHH XÂY DỰNG VÀ THƯƠNG MẠI NAM SANG PHÁT</h2>
+                                <p><strong>Địa chỉ:</strong> 70F Ngô Chí Quốc, Khu phố 22, Phường Tam Bình, TP. HCM</p>
+                                <p><strong>Số điện thoại:</strong> 0359 888 479</p>
+                                <ul class="company-features">
+                                    <li>Chuyên nhận thầu xây dựng nhà ở dân dụng, nhà phố và công trình cải tạo.</li>
+                                    <li>Thi công phần thô, hoàn thiện, điện nước theo thiết kế và tiến độ cam kết.</li>
+                                    <li>Cung cấp giải pháp thi công chất lượng, minh bạch vật tư, tối ưu chi phí.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <hr class="header-divider">
+
+                        <div class="invoice-title">
+                            <h1>BẢNG BÁO GIÁ VÀ XÁC NHẬN ĐƠN HÀNG</h1>
+                        </div>
+
+                        <div class="project-info-grid">
+                            <div class="info-label">Tên dự án</div>
+                            <div class="info-value" id="out-project-name">...</div>
+                            
+                            <div class="info-label">Chủ đầu tư</div>
+                            <div class="info-value" id="out-client-name">...</div>
+                            
+                            <div class="info-label">Địa chỉ</div>
+                            <div class="info-value" id="out-client-address">...</div>
+                            
+                            <div class="info-label">Liên hệ</div>
+                            <div class="info-value" id="out-client-contact"></div>
+                        </div>
+
+                        <div class="invoice-intro">
+                            Công ty TNHH Xây dựng và Thương mại Nam Sang Phát xin chân thành cảm ơn sự quan tâm của Quý khách hàng đối với dịch vụ xây dựng và vật tư do Công ty chúng tôi thi công và cung cấp. Chúng tôi xin gởi tới Quý khách hàng bảng báo giá cho dự án <strong id="out-project-name-bold">...</strong> chi tiết như sau:
+                        </div>
+
+                        <table class="invoice-table">
+                            <thead>
+                                <tr>
+                                    <th width="5%">STT</th>
+                                    <th width="35%">Hạng mục</th>
+                                    <th width="10%">Kích thước<br>m</th>
+                                    <th width="10%">Hệ số</th>
+                                    <th width="10%">Diện tích<br>phần thô<br>m²</th>
+                                    <th width="15%">Đơn giá<br>phần thô<br>VND/m²</th>
+                                    <th width="15%">Thành tiền<br>VND</th>
+                                </tr>
+                            </thead>
+                            <tbody id="out-table-body">
+                                <!-- JS will inject rows here -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6" class="text-right"><strong>TỔNG CỘNG</strong></td>
+                                    <td class="text-right"><strong id="out-total">0</strong></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        
+                        <div class="amount-in-words">
+                            Bằng chữ: <span id="out-total-words">Không đồng.</span>
+                        </div>
+
+                        <div class="work-descriptions">
+                            <div class="work-desc-title">DIỄN GIẢI CÔNG VIỆC</div>
+                            <ol id="out-descriptions-list">
+                                <!-- JS will inject li here -->
+                            </ol>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
