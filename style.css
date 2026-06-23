@@ -1,0 +1,451 @@
+:root {
+    --bg-dark: #11111b;
+    --panel-dark: #181825;
+    --border-dark: #313244;
+    --text-light: #cdd6f4;
+    --accent: #89b4fa;
+    --accent-hover: #b4befe;
+    --danger: #f38ba8;
+    
+    --paper-bg: #ffffff;
+    --paper-text: #000000;
+    --nsp-blue: #1A4B9C;
+    --nsp-dark-blue: #0A1C40;
+    --nsp-gold: #C69E58;
+    --table-header: #B4C6E7;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Editor Panel */
+.editor-panel {
+    width: 420px;
+    background-color: var(--panel-dark);
+    border-right: 1px solid var(--border-dark);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex-shrink: 0;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.3);
+    z-index: 10;
+}
+
+.editor-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid var(--border-dark);
+    background-color: rgba(0,0,0,0.2);
+}
+
+.editor-header h1 {
+    font-size: 1.3rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.editor-header p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.editor-section {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-dark);
+}
+
+.editor-section h2 {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: #a6adc8;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: rgba(0,0,0,0.2);
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.2);
+}
+
+.item-editor-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-dark);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.item-editor-card .remove-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.item-editor-card .remove-btn:hover {
+    opacity: 1;
+}
+
+.item-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+button.btn-primary {
+    background-color: var(--accent);
+    color: #11111b;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+button.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.editor-actions {
+    padding: 25px 20px;
+    display: flex;
+    gap: 12px;
+    margin-top: auto;
+    background-color: rgba(0,0,0,0.2);
+}
+
+button.btn-secondary {
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 12px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+button.btn-secondary:hover {
+    background-color: rgba(137, 180, 250, 0.1);
+}
+
+/* Preview Panel */
+.preview-panel {
+    flex: 1;
+    background-color: #1e1e2e;
+    overflow-y: auto;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.paper-wrapper {
+    position: relative;
+}
+
+.a4-paper {
+    background-color: var(--paper-bg);
+    color: var(--paper-text);
+    width: 210mm;
+    min-height: 297mm;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    padding: 15mm; 
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13pt;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+.watermark-print {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    opacity: 0.1; /* Làm mờ watermark */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.page-border {
+    border: 3px dotted #5A1E5C;
+    outline: none;
+    min-height: 100%;
+    padding: 20px 25px;
+}
+
+/* Invoice Header */
+.invoice-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.logo-text {
+    font-family: Arial, sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--nsp-blue);
+    margin-top: -15px;
+    letter-spacing: 1px;
+}
+
+.logo-name {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    color: var(--nsp-blue);
+}
+
+.logo-slogan {
+    font-family: Arial, sans-serif;
+    font-size: 6px;
+    color: #666;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+.company-info {
+    flex: 1;
+}
+
+.company-info h2 {
+    font-family: Arial, sans-serif;
+    color: var(--nsp-blue);
+    font-size: 14pt;
+    margin-bottom: 4px;
+    line-height: 1.1;
+}
+
+.company-info p {
+    margin: 1px 0;
+    font-size: 11pt;
+    color: #3884c7; 
+}
+
+.company-features {
+    list-style: none;
+    margin-top: 4px;
+    padding-left: 0;
+}
+
+.company-features li {
+    font-size: 10pt;
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+.company-features li::before {
+    content: "˗";
+    position: absolute;
+    left: 0;
+}
+
+.header-divider {
+    border: none;
+    border-top: 1px solid #333;
+    margin: 15px 0 25px 0;
+}
+
+.invoice-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.invoice-title h1 {
+    font-family: Arial, sans-serif;
+    color: var(--nsp-blue);
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    row-gap: 3px;
+    font-weight: bold;
+    font-size: 13pt;
+    margin-bottom: 15px;
+}
+
+.invoice-intro {
+    text-align: justify;
+    text-indent: 30px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.invoice-table th, .invoice-table td {
+    border: 1px solid #333;
+    padding: 5px;
+    vertical-align: middle;
+}
+
+.invoice-table th {
+    background-color: var(--table-header);
+    font-weight: bold;
+}
+
+.invoice-table tfoot td {
+    background-color: var(--table-header);
+}
+
+.text-right {
+    text-align: right;
+    padding-right: 12px !important;
+}
+
+.amount-in-words {
+    font-size: 13pt;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.amount-in-words span {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.work-descriptions {
+    margin-top: 10px;
+}
+
+.work-desc-title {
+    background-color: #FDF1D7;
+    display: block;
+    padding: 3px 10px;
+    font-size: 13pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: Arial, sans-serif;
+}
+
+.work-descriptions ol {
+    padding-left: 25px;
+    text-align: justify;
+    line-height: 1.3;
+}
+.work-descriptions li {
+    margin-bottom: 2px;
+}
+
+/* Print Styles */
+@media print {
+    .no-print, .editor-panel { 
+        display: none !important; 
+    }
+    .app-container { 
+        height: auto; 
+        overflow: visible; 
+        display: block;
+    }
+    body { 
+        background: white; 
+        height: auto; 
+        overflow: visible; 
+    }
+    .preview-panel { 
+        padding: 0; 
+        background: white; 
+        display: block; 
+    }
+    .a4-paper { 
+        box-shadow: none; 
+        margin: 0; 
+        width: 100%; 
+        min-height: auto;
+        padding: 0; /* Let print dialog handle margins */
+    }
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+    .page-border {
+        border-color: #5A1E5C; 
+        outline-color: #5A1E5C;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .invoice-table th, .invoice-table tfoot td, .work-desc-title, .logo-container * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
